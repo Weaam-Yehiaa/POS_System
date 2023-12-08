@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -19,9 +17,9 @@ class _StaffMembersTableState extends State<StaffMembersTable> {
       width: 970,
       height: 300,
       decoration: ShapeDecoration(
-        color: Color(0xFFF7F7F7),
+        color: const Color(0xFFF7F7F7),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        shadows: [
+        shadows:const [
           BoxShadow(
             color: Color(0x3F000000),
             blurRadius: 4,
@@ -39,7 +37,7 @@ class _StaffMembersTableState extends State<StaffMembersTable> {
                 .collection('staff').snapshots(),
                 builder:(BuildContext context,AsyncSnapshot<QuerySnapshot> snapshot){
                   if (!snapshot.hasData) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   }
@@ -56,7 +54,7 @@ class _StaffMembersTableState extends State<StaffMembersTable> {
                                 children: [
                                   Text(
                                     document['email'],
-                                    style: TextStyle(
+                                    style:const TextStyle(
                                       color: Colors.black,
                                       fontSize: 12,
                                       fontFamily: 'Poppins',
@@ -64,10 +62,10 @@ class _StaffMembersTableState extends State<StaffMembersTable> {
                                       height: 1.50,
                                     ),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   Text(
                                     document['role'],
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 12,
                                       fontFamily: 'Poppins',
@@ -77,7 +75,7 @@ class _StaffMembersTableState extends State<StaffMembersTable> {
                                   ),
                                   IconButton(
                                       onPressed: (){},
-                                      icon: Icon(FontAwesomeIcons.ellipsisVertical),
+                                      icon:const Icon(FontAwesomeIcons.ellipsisVertical),
                                   ),
 
                                 ],

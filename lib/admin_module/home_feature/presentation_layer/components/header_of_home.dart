@@ -1,11 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:side_proj/admin_module/adminStaff/presentation/staff_screen.dart';
 import 'package:side_proj/admin_module/home_feature/presentation_layer/controller/admin_home_bloc.dart';
 import 'package:side_proj/admin_module/home_feature/presentation_layer/controller/admin_home_states.dart';
 import 'package:side_proj/admin_module/presentation_layer/controller/admin_bloc.dart';
-import 'package:side_proj/services/services_locator.dart';
 
 import '../../../../shared/enums.dart';
 
@@ -13,7 +10,7 @@ class HeaderOfAdminHome extends StatelessWidget {
   const HeaderOfAdminHome({Key? key, required this.screenWidth})
       : super(key: key);
 
-  final screenWidth;
+  final double screenWidth;
 
   @override
   Widget build(BuildContext context) {

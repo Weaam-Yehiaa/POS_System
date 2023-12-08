@@ -1,42 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:side_proj/features/register/data/register_remote_data_source.dart';
-import 'package:side_proj/features/register/domain/repos/RegisterRepoImp.dart';
 import 'package:side_proj/shared/components.dart';
 
 import '../../login/presentation/login_screen.dart';
+import '../data/register_remote_data_source.dart';
+import '../domain/repos/register_repo_imp.dart';
 
 class RegisterScreenImpl extends StatefulWidget {
+  const RegisterScreenImpl({super.key});
+
   @override
   State<RegisterScreenImpl> createState() => _RegisterScreenImplState();
 }
 
 class _RegisterScreenImplState extends State<RegisterScreenImpl> {
-  TextEditingController nameController= new TextEditingController();
+  TextEditingController nameController = TextEditingController();
 
-  TextEditingController emailController= new TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
-  TextEditingController passwordController= new TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
-  bool visibility= true;
+  bool visibility = true;
 
   @override
   Widget build(BuildContext context) {
-    RegisterRepoImpl registerRepoImp=RegisterRepoImpl();
-    RegisterRemoteDataSourceImpl registerRemoteDataSourceImpl=RegisterRemoteDataSourceImpl();
+    RegisterRepoImpl registerRepoImp = RegisterRepoImpl();
+    RegisterRemoteDataSourceImpl registerRemoteDataSourceImpl =
+        RegisterRemoteDataSourceImpl();
     return Scaffold(
       body: Column(
         children: [
-          CustomizedAppBar(),
+          const CustomizedAppBar(),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: MediaQuery.sizeOf(context).width/4.3,
+                  width: MediaQuery.sizeOf(context).width / 4.3,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 388,
                         height: 84,
                         child: Text(
@@ -49,117 +52,103 @@ class _RegisterScreenImplState extends State<RegisterScreenImpl> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 25,
                       ),
                       customizedTextFormField(
                           textEditingController: nameController,
                           hintText: 'User name',
-                          textInputType: TextInputType.text
-                      ),
-                      SizedBox(
+                          textInputType: TextInputType.text),
+                      const SizedBox(
                         height: 25,
                       ),
                       customizedTextFormField(
                           textEditingController: emailController,
                           hintText: 'Email',
-                          textInputType: TextInputType.text
-                      ),
-                      SizedBox(
+                          textInputType: TextInputType.text),
+                      const SizedBox(
                         height: 25,
                       ),
                       customizedTextFormField(
                           textEditingController: passwordController,
                           hintText: 'Password',
                           textInputType: TextInputType.visiblePassword,
-                          suffix: visibility?Icon(
-                            Icons.visibility_outlined,
-                            color: Colors.grey,
-                          )
-                              :Icon(
-                            Icons.visibility_off_outlined,
-                            color: Colors.grey,
-                          ),
+                          suffix: visibility
+                              ? const Icon(
+                                  Icons.visibility_outlined,
+                                  color: Colors.grey,
+                                )
+                              : const Icon(
+                                  Icons.visibility_off_outlined,
+                                  color: Colors.grey,
+                                ),
                           secure: visibility,
-                          show: (){
+                          show: () {
                             setState(() {
-                              visibility=!visibility;
+                              visibility = !visibility;
                             });
-                          }
-                      ),
-                      SizedBox(
+                          }),
+                      const SizedBox(
                         height: 25,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 25,
                       ),
                       CustomizedButton(
-                          text: Text(
+                          text: const Text(
                             'Sign up',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 17,
                             ),
                           ),
-                          onPressed:(){
+                          onPressed: () {
                             // save Data in fireStore
                             registerRemoteDataSourceImpl.createUser(
-                              name:  nameController.text,
-                              email:  emailController.text,
-
+                              name: nameController.text,
+                              email: emailController.text,
                             );
 
                             // Auth
-                            registerRepoImp.user_register(
-                              emailController.text,
-                              passwordController.text,
-                              context
-                            );
-
-                          }
-
-                      ),
-                      SizedBox(
+                            registerRepoImp.userRegister(emailController.text,
+                                passwordController.text, context);
+                          }),
+                      const SizedBox(
                         height: 20,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             'Already have account?',
                             style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 18
-                            ),
+                                fontWeight: FontWeight.w400, fontSize: 18),
                           ),
                           GestureDetector(
-                            onTap: (){
-                              Navigator.pushReplacement(context,
-                                  MaterialPageRoute(builder: (context)=>LoginScreen())
-                              );
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const LoginScreen()));
                             },
-                            child: Text(
+                            child: const Text(
                               ' Sign in',
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14
-                              ),
+                                  fontWeight: FontWeight.w600, fontSize: 14),
                             ),
                           ),
                         ],
                       ),
-
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 70,
                 ),
                 Image(
-                  image: AssetImage('assets/images/register.png'),
-                  width: MediaQuery.sizeOf(context).width/2.5,
+                  image: const AssetImage('assets/images/register.png'),
+                  width: MediaQuery.sizeOf(context).width / 2.5,
                 ),
-
               ],
             ),
           ),

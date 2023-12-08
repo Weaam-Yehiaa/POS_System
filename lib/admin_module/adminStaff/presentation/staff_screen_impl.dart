@@ -6,7 +6,9 @@ import 'package:side_proj/shared/components.dart';
 import 'components/add_team_member_table.dart';
 
 class StaffScreenImpl extends StatelessWidget {
-  TextEditingController filterController= new TextEditingController();
+  TextEditingController filterController=  TextEditingController();
+
+  StaffScreenImpl({super.key});
 
 
 
@@ -24,7 +26,7 @@ class StaffScreenImpl extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Add your team',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -35,17 +37,17 @@ class StaffScreenImpl extends StatelessWidget {
                 height: 1.50,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 18,
             ),
-            AddTeamMemberTable(),
-            SizedBox(
+          const   AddTeamMemberTable(),
+            const SizedBox(
               height: 40,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
+               const Text(
                   'Staff Members',
                   style: TextStyle(
                     color: Colors.black,
@@ -61,19 +63,19 @@ class StaffScreenImpl extends StatelessWidget {
                   width: 300,
                  
                   child: customizedTextFormField(
-                      suffix:Icon(Icons.search_rounded) ,
+                      suffix:const Icon(Icons.search_rounded) ,
                       textEditingController: filterController,
                       hintText: 'Filter',
                       textInputType: TextInputType.emailAddress,
-                      pre:Icon(FontAwesomeIcons.arrowDownWideShort)
+                      pre:const Icon(FontAwesomeIcons.arrowDownWideShort)
                   ),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            StaffMembersTable()
+            const StaffMembersTable()
           ],
         ),
       ),

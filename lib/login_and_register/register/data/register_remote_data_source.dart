@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:side_proj/features/register/data/register_local_data_source.dart';
-import 'package:side_proj/models/userModel.dart';
+import 'package:side_proj/login_and_register/register/data/register_local_data_source.dart';
+import 'package:side_proj/models/user_model.dart';
 
 abstract class RegisterRemoteDataSource{
   Future<void> createUser({
@@ -22,8 +22,8 @@ class RegisterRemoteDataSourceImpl extends RegisterRemoteDataSource{
     var restaurant= users.doc();
     var staff=restaurant.collection('staff');
     var member=staff.doc();
-   userModel model= userModel(email, name,role, restaurant.id, member.id);
-    member.set(model.ToMap());
+   UserModel model= UserModel(email, name,role, restaurant.id, member.id);
+    member.set(model.toMap());
 
 
     //cashing data

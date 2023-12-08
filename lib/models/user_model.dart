@@ -1,7 +1,7 @@
-class userModel {
+class UserModel {
   String? email, name, restaurantID, uID, role;
 
-  userModel(
+  UserModel(
       this.email,
       this.name,
       this.role,
@@ -9,7 +9,7 @@ class userModel {
       this.uID,
       );
 
-  userModel.fromJson(json)
+  UserModel.fromJson(json)
   {
     email = json['email'];
     name = json['name'];
@@ -18,7 +18,7 @@ class userModel {
     role=json['role'];
   }
 
-  Map<String, dynamic> ToMap() {
+  Map<String, dynamic> toMap() {
     return {
       'email': email,
       'name': name,

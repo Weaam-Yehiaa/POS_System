@@ -5,6 +5,6 @@ class AdminTutorialScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("tutorail screen"));
+    return const Center(child: Text("tutorail screen"));
   }
 }

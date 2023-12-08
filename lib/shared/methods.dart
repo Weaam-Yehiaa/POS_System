@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:side_proj/shared/cache_helper.dart';
 import 'package:side_proj/shared/constants.dart';
 
-import '../models/userModel.dart';
-Future<userModel> getUserData({
+import '../models/user_model.dart';
+Future<UserModel> getUserData({
   required String restaurantID,
   required String uId,
 }) async {
@@ -14,16 +14,16 @@ Future<userModel> getUserData({
       .collection('staff');
   final DocumentReference userDoc = staffCollection.doc(uId);
   final DocumentSnapshot userSnapshot = await userDoc.get();
-  late userModel _myData;
+  late UserModel myData;
   if (userSnapshot.exists) {
     final userData = userSnapshot.data();
 
-    _myData = userModel.fromJson(userData);
+    myData = UserModel.fromJson(userData);
 
   }
-  return _myData;
+  return myData;
 }
-void cachingData(userModel userData){
+void cachingData(UserModel userData){
   kUid=userData.uID;
   CacheHelper.saveData(key: 'uId', value:kUid);
 

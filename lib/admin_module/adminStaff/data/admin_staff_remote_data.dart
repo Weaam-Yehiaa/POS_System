@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:side_proj/shared/constants.dart';
 
-import '../../../models/userModel.dart';
+import '../../../models/user_model.dart';
 
 abstract class AdminStaffRemoteData{
   Future<void> createUser({
@@ -17,8 +17,8 @@ class AdminStaffRemoteDataImpl extends AdminStaffRemoteData{
     var restaurant= users.doc(kRestaurantId);
     var staff=restaurant.collection('staff');
     var member=staff.doc();
-    userModel model= userModel(email, name,role, kRestaurantId, member.id);
-    member.set(model.ToMap());
+    UserModel model= UserModel(email, name,role, kRestaurantId, member.id);
+    member.set(model.toMap());
   }
 
 }

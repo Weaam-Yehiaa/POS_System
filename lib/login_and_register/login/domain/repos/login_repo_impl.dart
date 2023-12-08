@@ -1,31 +1,34 @@
-import 'dart:html';
+import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:side_proj/admin_module/admin_screen.dart';
-import 'package:side_proj/features/login/domain/repos/login_repo.dart';
+
+import 'login_repo.dart';
 
 class LoginRepoImp implements LoginRepo{
   @override
-  Future<void> user_login(String email, String password,BuildContext context) async {
+  Future<void> userLogin(String email, String password,BuildContext context) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: email,
           password: password
       );
-      print('Login is Done');
+      log('Login is Done');
       //Navigation will change for each user
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const AdminScreen()),
-      );
+      if (context.mounted) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const AdminScreen()),
+        );
+      }
       // navigate to home
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email.');
+        log('No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
+        log('Wrong password provided for that user.');
       }
     }
   }

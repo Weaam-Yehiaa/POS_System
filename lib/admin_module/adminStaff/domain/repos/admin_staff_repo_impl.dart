@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:side_proj/admin_module/adminStaff/domain/repos/admin_staff_repo.dart';
 
@@ -22,13 +24,13 @@ void  makeAccount(String email,String password,String role)   {
     email: email,
     password: password,
   ).then((value){
-    print('RRRRegistration is done');
-    print(value.user!.email.toString());
+    log('RRRRegistration is done');
+    log(value.user!.email.toString());
     //Add Data to fireStore
     AdminStaffRemoteDataImpl adminStaffRemoteDataImpl=AdminStaffRemoteDataImpl();
     adminStaffRemoteDataImpl.createUser(name: kName, email: email,role: role);
   }
   ).catchError((error){
-    print('ERRORRRRRR'+ error.toString());
+    log('ERRORRRRRR$error');
   });
 }

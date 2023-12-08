@@ -18,11 +18,11 @@ Widget customizedTextFormCategory({
       textAlign: TextAlign.center,
       decoration:
       InputDecoration(
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
           borderSide: BorderSide.none,
         ),
         hintText: hintText,
-        hintStyle: TextStyle(
+        hintStyle:const TextStyle(
           color: Colors.black,
           fontSize: 14,
           fontWeight: FontWeight.w400,

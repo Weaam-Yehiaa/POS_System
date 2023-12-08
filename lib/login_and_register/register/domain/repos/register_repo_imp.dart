@@ -1,19 +1,19 @@
-import 'package:dartz/dartz.dart';
+import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:side_proj/admin_module/admin_screen.dart';
-import 'package:side_proj/features/register/domain/repos/register_repo.dart';
+import 'package:side_proj/login_and_register/register/domain/repos/register_repo.dart';
 import 'package:side_proj/shared/errors/failures.dart';
 
  class RegisterRepoImpl implements RegisterRepo{
   @override
-   void  user_register(String email,String password,BuildContext context)   {
+   void  userRegister(String email,String password,BuildContext context)   {
     FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
     ).then((value){
-      print('RRRRegistration is done');
-      print(value.user!.email.toString());
+      log('RRRRegistration is done');
+      log(value.user!.email.toString());
       //navigate to home as an admin
       Navigator.push(
         context,
@@ -21,7 +21,7 @@ import 'package:side_proj/shared/errors/failures.dart';
       );
     }
     ).catchError((error){
-      print('ERRORRRRRR'+ error.toString());
+      log('ERRORRRRRR$error');
       RegistrationFailure(error.toString());
 
     });

@@ -40,17 +40,17 @@ Widget customizedTextFormField(
       ),
 );
 class CustomizedButton extends StatelessWidget {
-  Widget text;
-  void Function()? onPressed;
-  double height;
-  double? width;
-  CustomizedButton({
+  CustomizedButton({super.key,
     required this.text,
     required this.onPressed,
     this.height=60,
     this.width,
 });
 
+  Widget text;
+  void Function()? onPressed;
+  double height;
+  double? width;
   @override
   Widget build(BuildContext context) {
       return GestureDetector(

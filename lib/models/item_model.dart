@@ -1,14 +1,14 @@
-class itemModel{
+class ItemModel{
   String?  name, restaurantID, categoryID,itemID ;
   int? price;
-  itemModel(
+  ItemModel(
       this.name,
       this.price,
       this.restaurantID,
       this.categoryID,
       this.itemID,
       );
-  itemModel.fromJson(json)
+  ItemModel.fromJson(json)
   {
     name = json['name'];
     price=json['price'];
@@ -17,7 +17,7 @@ class itemModel{
     itemID=json['itemID'];
   }
 
-  Map<String, dynamic> ToMap() {
+  Map<String, dynamic> toMap() {
     return {
       'price': price,
       'name': name,

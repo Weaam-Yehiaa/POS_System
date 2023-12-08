@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:side_proj/admin_module/home_feature/data_layer/data_source/admin_home_remote_data_source.dart';
 import 'package:side_proj/admin_module/home_feature/data_layer/models/all_to_do_list_model.dart';
 import 'package:side_proj/admin_module/home_feature/domain_layer/repository/base_admin_home_repository.dart';
@@ -38,7 +40,7 @@ class AdminHomeRepository extends BaseAdminHomeRepository{
   Future<List<AllToDoListModel>> getAllToDoList() async {
     final result = await baseAdminHomeRemoteDataSource.getAllToDo();
 
-    print("to do list in repo is $result");
+    log("to do list in repo is $result");
     return result;
 
   }

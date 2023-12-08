@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:side_proj/admin_module/notes-feature/presentaion_layer/controller/admin_notes_states.dart';
 import 'package:side_proj/admin_module/notes-feature/presentaion_layer/screens/add_note_screen.dart';
 import 'package:side_proj/services/services_locator.dart';
-
 import '../../../home_feature/data_layer/models/all_notes_model.dart';
 import '../components/all_notes.dart';
 import '../controller/admin_notes_bloc.dart';
@@ -31,7 +29,7 @@ class AdminNotesScreen extends StatelessWidget {
         ),
         child: BlocProvider(
           create: (BuildContext context) =>
-              adminNotesBloc..add(GetAllNotesEvent() ),
+              adminNotesBloc..add(GetAllNotesEvent()),
           child: Stack(children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,10 +39,8 @@ class AdminNotesScreen extends StatelessWidget {
                   nameOfRow: "Pinned",
                 ),
                 AllNotes(screenSize: screenSize, nameOfRow: "Today"),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-
                   children: [
                     FloatingActionButton(
                       onPressed: () {
@@ -65,9 +61,10 @@ class AdminNotesScreen extends StatelessWidget {
             BlocBuilder<AdminNotesBloc, AdminNotesStates>(
               builder: (context, state) {
                 if (state.showAddNoteScreen == true) {
-                  return Center(child: const AddNoteScreen());
-                } else
+                  return const Center(child: AddNoteScreen());
+                } else {
                   return Container();
+                }
               },
             ),
           ]),

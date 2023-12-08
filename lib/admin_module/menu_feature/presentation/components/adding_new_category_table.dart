@@ -3,11 +3,10 @@ import 'package:side_proj/admin_module/menu_feature/presentation/components/cust
 import 'package:side_proj/shared/components.dart';
 
 class AddingNewCategoryTable extends StatelessWidget {
-  TextEditingController categoryNameController = TextEditingController();
-  TextEditingController categoryItemController = TextEditingController();
-  TextEditingController categoryPriceController = TextEditingController();
-
-   AddingNewCategoryTable({super.key});
+  AddingNewCategoryTable({super.key});
+  final TextEditingController categoryNameController = TextEditingController();
+  final TextEditingController categoryItemController = TextEditingController();
+  final TextEditingController categoryPriceController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:side_proj/admin_module/home_feature/data_layer/models/all_to_do_list_model.dart';
 
@@ -25,7 +27,7 @@ class FireStoreFunctions {
       }
     } catch (e) {
       // Handle any errors that occur during the process
-      print("Error fetching notes: $e");
+      log("Error fetching notes: $e");
       return []; // Return an empty list or handle the error differently
     }
   }
@@ -51,7 +53,7 @@ class FireStoreFunctions {
       }
     } catch (e) {
       // Handle any errors that occur during the process
-      print("Error fetching notes: $e");
+      log("Error fetching notes: $e");
       return []; // Return an empty list or handle the error differently
     }
   }
@@ -78,9 +80,9 @@ class FireStoreFunctions {
       // Update the 'messageID' field with the generated document ID
       await addedNoteRef.update({'messageID': addedNoteRef.id});
 
-      print("Note added to Firestore successfully!");
+      log("Note added to Firestore successfully!");
     } catch (e) {
-      print("Error adding note to Firestore: $e");
+      log("Error adding note to Firestore: $e");
     }
   }
 
@@ -105,7 +107,7 @@ class FireStoreFunctions {
       }
     } catch (e) {
       // Handle any errors that occur during the process
-      print("Error fetching notes: $e");
+      log("Error fetching notes: $e");
       return []; // Return an empty list or handle the error differently
     }
   }
@@ -131,7 +133,7 @@ class FireStoreFunctions {
       }
     } catch (e) {
       // Handle any errors that occur during the process
-      print("Error fetching notes: $e");
+      log("Error fetching notes: $e");
       return []; // Return an empty list or handle the error differently
     }
   }

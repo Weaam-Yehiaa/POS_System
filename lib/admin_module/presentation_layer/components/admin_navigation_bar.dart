@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../constants/admin_navigation_items.dart';
 import '../controller/admin_bloc.dart';
 
@@ -67,8 +66,8 @@ class AdminNavigationBar extends StatelessWidget {
                                   iconColor = state.pageNumber == index
                                       ? Colors.red
                                       : Colors.black;
-                                  print(state.pageNumber);
-                                  print("change page ");
+                                  log(state.pageNumber.toString());
+                                  log("change page ");
                                 }
                                 return Icon(
                                   adminNavigationItems[index].icon,
@@ -80,7 +79,7 @@ class AdminNavigationBar extends StatelessWidget {
                               screenWidth > 800
                                   ? adminNavigationItems[index].name
                                   : "",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize:
                                       14 // Adjust text size based on screen size
                                   ),

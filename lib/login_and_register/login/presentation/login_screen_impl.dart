@@ -1,9 +1,7 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:side_proj/features/login/domain/repos/login_repo_impl.dart';
-
 import '../../../shared/components.dart';
+import '../domain/repos/login_repo_impl.dart';
 
 class LoginScreenImpl extends StatefulWidget {
   const LoginScreenImpl({super.key});
@@ -102,7 +100,7 @@ class _LoginScreenImplState extends State<LoginScreenImpl> {
                           ),
                         ),
                         onPressed: () {
-                          loginRepoImp.user_login(emailController.text,
+                          loginRepoImp.userLogin(emailController.text,
                               passwordController.text, context);
                         },
                       ),
