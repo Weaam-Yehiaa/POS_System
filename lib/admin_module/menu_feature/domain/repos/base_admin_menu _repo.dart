@@ -1,15 +1,11 @@
-abstract class BaseAdminMenuRepo {
-  void addItem({
-    required String categoryName,
-    required String categoryItem,
-    required String categoryPrice,
-  });
+import 'package:dartz/dartz.dart';
 
-  void addNewCategory({
-  required String categoryName,
-    required String categoryItem,
-    required int categoryPrice,
-    required String restaurantId,
+import '../../../../shared/base_response_model.dart';
+import '../../../../shared/errors/failures_model.dart';
+
+abstract class BaseAdminMenuRepo {
+  Future<Either<Failure,BaseResponse>>  addItem({
+    required Map<String, dynamic> query,
   });
 
   void deleteItem();

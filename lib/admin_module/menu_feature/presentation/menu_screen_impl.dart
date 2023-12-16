@@ -53,7 +53,7 @@ class MenuScreenImpl extends StatelessWidget {
                   onPressed: () {
                     showCupertinoModalPopup(
                         context: context,
-                        builder: (context) => AddingNewCategoryTable());
+                        builder: (context) => const AddingNewCategoryTable());
                   },
                 ),
               ],

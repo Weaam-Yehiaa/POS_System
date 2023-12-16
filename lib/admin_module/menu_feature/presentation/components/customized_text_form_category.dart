@@ -5,6 +5,8 @@ Widget customizedTextFormCategory({
   required String hintText,
   double width=90,
   textType =TextInputType.text,
+bool validate=true,
+  String? validatorText,
 })=>SizedBox(
   width: width,
   height: 50,
@@ -16,6 +18,14 @@ Widget customizedTextFormCategory({
     color: Colors.white,
     child: TextFormField(
       textAlign: TextAlign.center,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return validatorText;
+        } else if (!validate) {
+          return validatorText;
+        }
+        return null;
+      },
       decoration:
       InputDecoration(
         border: const OutlineInputBorder(
@@ -23,7 +33,7 @@ Widget customizedTextFormCategory({
         ),
         hintText: hintText,
         hintStyle:const TextStyle(
-          color: Colors.black,
+          color: Colors.grey,
           fontSize: 14,
           fontWeight: FontWeight.w400,
         ),

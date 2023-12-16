@@ -1,10 +1,10 @@
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:side_proj/admin_module/adminStaff/domain/repos/admin_staff_repo.dart';
 
 import '../../../../shared/constants.dart';
 import '../../data/admin_staff_remote_data.dart';
+import 'admin_staff_repo.dart';
 
 class AdminStaffRepoImpl extends AdminStaffRepo {
   @override

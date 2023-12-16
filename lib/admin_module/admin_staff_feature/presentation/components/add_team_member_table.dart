@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:side_proj/admin_module/adminStaff/domain/repos/admin_staff_repo_impl.dart';
 
 import '../../../../shared/components.dart';
+import '../../domain/repos/admin_staff_repo_impl.dart';
 
 class AddTeamMemberTable extends StatefulWidget {
   const AddTeamMemberTable({super.key});
