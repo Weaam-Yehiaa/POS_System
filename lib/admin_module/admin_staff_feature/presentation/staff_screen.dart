@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:side_proj/admin_module/adminStaff/presentation/staff_screen_impl.dart';
+
+import 'staff_screen_impl.dart';
 
 
 class AdminStaffScreen extends StatelessWidget {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:side_proj/admin_module/adminStaff/presentation/components/staff_members_table.dart';
 import 'package:side_proj/shared/components.dart';
 
 import 'components/add_team_member_table.dart';
+import 'components/staff_members_table.dart';
 
 class StaffScreenImpl extends StatelessWidget {
   TextEditingController filterController=  TextEditingController();

@@ -9,7 +9,7 @@ import 'firebase_options.dart';
 
 void main() async {
   Bloc.observer = MyBlocObserver();
-  ServicesLocator().init();
+   ServicesLocator().init();
   await CacheHelper.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
