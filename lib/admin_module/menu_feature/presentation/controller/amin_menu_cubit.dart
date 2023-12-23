@@ -5,10 +5,13 @@ import 'package:side_proj/admin_module/menu_feature/domain/use_cases/add_item_us
 import 'package:side_proj/admin_module/menu_feature/presentation/controller/amin_menu_states.dart';
 import 'package:side_proj/shared/enums.dart';
 
+import '../../domain/use_cases/fetch_menu_use_case.dart';
+
 class AdminMenuCubit extends Cubit<AdminMenuState> {
   final AddIMenuItemUseCase _addIMenuItemUseCase;
+  final FetchMenuUseCase _fetchMenuUseCase;
 
-  AdminMenuCubit(this._addIMenuItemUseCase) : super(const AdminMenuState());
+  AdminMenuCubit(this._addIMenuItemUseCase, this._fetchMenuUseCase) : super(const AdminMenuState());
 
   static AdminMenuCubit get(context) => BlocProvider.of(context);
 
@@ -49,6 +52,25 @@ class AdminMenuCubit extends Cubit<AdminMenuState> {
     // }
   }
 
+  void fetchMenu()async{
+    emit(state.copyWith(
+      fetchMenuState: RequestState.loading,
+    ));
+
+    final result=await _fetchMenuUseCase();
+    result.fold((l) {
+      Fluttertoast.showToast(
+          msg: l.errorMessage,
+          toastLength: Toast.LENGTH_SHORT,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
+    }, (r) {
+
+      emit(state.copyWith(fetchMenuState: RequestState.loaded));
+    });
+  }
   void clearControllers() {
     categoryNameController.text = '';
     categoryItemController.text = '';

@@ -12,6 +12,16 @@ class AdminMenuRepo extends BaseAdminMenuRepo {
   AdminMenuRepo(this._adminMenuRemoteDataImpl);
 
   @override
+  Future<Either<Failure, BaseResponse>> fetchMenu() async {
+    try{
+      final result=await _adminMenuRemoteDataImpl.fetchMenu();
+      return Right(result);
+    }on ServerFailure catch (failure){
+      log(failure.errorMessage);
+      return Left(ServerFailure(failure.errorMessage));
+    }
+  }
+  @override
   Future<Either<Failure, BaseResponse>> addItem(
       {required Map<String, dynamic> query,}) async {
     try{
@@ -25,22 +35,49 @@ class AdminMenuRepo extends BaseAdminMenuRepo {
   }
 
   @override
-  void deleteCategory() {
-    // TODO: implement deleteCategory
+  Future<Either<Failure, BaseResponse>> deleteCategory({required Map<String, dynamic> query}) async {
+    try{
+      final result=await _adminMenuRemoteDataImpl.deleteCategory(query: query);
+      return Right(result);
+    }on ServerFailure catch (failure){
+      log(failure.errorMessage);
+      return Left(ServerFailure(failure.errorMessage));
+    }
   }
 
   @override
-  void deleteItem() {
-    // TODO: implement deleteItem
+  Future<Either<Failure, BaseResponse>> deleteItem({required Map<String, dynamic> query}) async {
+    try{
+      final result=await _adminMenuRemoteDataImpl.deleteItem(query: query);
+      return Right(result);
+    }on ServerFailure catch (failure){
+      log(failure.errorMessage);
+      return Left(ServerFailure(failure.errorMessage));
+    }
   }
 
   @override
-  void editCategory() {
-    // TODO: implement editCategory
+  Future<Either<Failure, BaseResponse>> editCategory({required Map<String, dynamic> query}) async {
+    try{
+      final result=await _adminMenuRemoteDataImpl.editCategory(query: query);
+      return Right(result);
+    }on ServerFailure catch (failure){
+      log(failure.errorMessage);
+      return Left(ServerFailure(failure.errorMessage));
+    }
   }
 
   @override
-  void editItem() {
-    // TODO: implement editItem
+  Future<Either<Failure, BaseResponse>> editItem({required Map<String, dynamic> query}) async {
+    try{
+      final result=await _adminMenuRemoteDataImpl.editItem(query: query);
+      return Right(result);
+    }on ServerFailure catch (failure){
+      log(failure.errorMessage);
+      return Left(ServerFailure(failure.errorMessage));
+    }
   }
+
+
+
 }

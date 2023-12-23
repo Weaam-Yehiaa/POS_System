@@ -8,6 +8,7 @@ import 'package:side_proj/admin_module/home_feature/presentation_layer/controlle
 import 'package:side_proj/admin_module/menu_feature/data/repos/admin_menu_repo_impl.dart';
 import 'package:side_proj/admin_module/menu_feature/domain/repos/base_admin_menu%20_repo.dart';
 import 'package:side_proj/admin_module/menu_feature/domain/use_cases/add_item_use_case.dart';
+import 'package:side_proj/admin_module/menu_feature/domain/use_cases/fetch_menu_use_case.dart';
 import 'package:side_proj/admin_module/notes-feature/data_layer/data_source/admin_notes_remote_data_source.dart';
 import 'package:side_proj/admin_module/notes-feature/data_layer/repository/admin_notes_repository.dart';
 import 'package:side_proj/admin_module/notes-feature/domain_layer/use_cases/add_note_use_case.dart';
@@ -64,5 +65,6 @@ class ServicesLocator {
     getIt.registerLazySingleton(() => AddNoteUseCase(getIt()));
     getIt.registerLazySingleton(() => GetAllNotesUseCaseNotes(getIt()));
     getIt.registerLazySingleton(() => AddIMenuItemUseCase(getIt()));
+    getIt.registerLazySingleton(() => FetchMenuUseCase(getIt()));
   }
 }

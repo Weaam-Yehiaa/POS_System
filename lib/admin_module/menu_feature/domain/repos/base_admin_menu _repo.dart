@@ -4,15 +4,25 @@ import '../../../../shared/base_response_model.dart';
 import '../../../../shared/errors/failures_model.dart';
 
 abstract class BaseAdminMenuRepo {
-  Future<Either<Failure,BaseResponse>>  addItem({
+  Future<Either<Failure, BaseResponse>> addItem({
     required Map<String, dynamic> query,
   });
 
-  void deleteItem();
+  Future<Either<Failure, BaseResponse>> fetchMenu();
 
-  void deleteCategory();
+  Future<Either<Failure, BaseResponse>> deleteItem({
+    required Map<String, dynamic> query,
+  });
 
-  void editItem();
+  Future<Either<Failure, BaseResponse>> deleteCategory({
+    required Map<String, dynamic> query,
+  });
 
-  void editCategory();
+  Future<Either<Failure, BaseResponse>> editItem({
+    required Map<String, dynamic> query,
+  });
+
+  Future<Either<Failure, BaseResponse>> editCategory({
+    required Map<String, dynamic> query,
+  });
 }

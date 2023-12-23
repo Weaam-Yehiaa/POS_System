@@ -15,7 +15,7 @@ class AddingNewCategoryTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AdminMenuCubit(getIt()),
+      create: (context) => AdminMenuCubit(getIt(),getIt()),
       child: BlocBuilder<AdminMenuCubit, AdminMenuState>(
         builder: (context, state) {
           return Form(
@@ -156,6 +156,7 @@ class AddingNewCategoryTable extends StatelessWidget {
                                           .currentState!
                                           .validate()) {
                                         log(kRestaurantId.toString());
+                                        AdminMenuCubit.get(context).fetchMenu();
                                         AdminMenuCubit.get(context).addItemMenu(
                                             categoryId:
                                                 AdminMenuCubit.get(context)
